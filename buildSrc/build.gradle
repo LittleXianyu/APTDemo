@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+
+dependencies {
+    implementation gradleApi() //gradle sdk
+    implementation localGroovy() //groovy sdk
+    implementation 'com.android.tools.build:gradle:4.2.2'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    google()
+}
+
+

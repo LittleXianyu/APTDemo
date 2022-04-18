@@ -1,0 +1,14 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "RoomViewModel"
+include ':app'
+include ':app:buildSrc'
+include ':apt-annotation'
+include ':apt-processor'
+include ':apt-library'
