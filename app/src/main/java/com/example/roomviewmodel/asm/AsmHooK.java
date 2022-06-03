@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.roomviewmodel.MainActivity;
+import com.example.roomviewmodel.roomdemo.MainActivity;
 
 public class AsmHooK {
     public static Intent getIntent(MainActivity activity) {

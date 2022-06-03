@@ -22,7 +22,7 @@ class CallMethodVisitor extends ClassVisitor {
     public static final String sComponentActivityOnCreate = "androidx/core/app/ComponentActivity.onCreate(Landroid/os/Bundle;)V";
     public static final String sHookedClassFunbefore = "com/example/roomviewmodel/asm/HooKedClass.funbefore()V";
 
-    private static final HashMap<String, String> TOUCH_METHOD = new HashMap<String,String>();
+    private static final HashMap<String, String> TOUCH_METHOD = new HashMap<String, String>();
     private static final List<String> SIMPLE_METHOD = new ArrayList();
 
 
@@ -58,19 +58,20 @@ class CallMethodVisitor extends ClassVisitor {
         MethodVisitor methodVisitor = super.visitMethod(access, name, desc, signature, exceptions);
         String method = this.visitName + "." + name + desc;
 
-        if(this.visitName.equals("android/app/Activity")){
-            System.out.println(">>> this.visitName: "+this.visitName);
+        if (this.visitName.equals("android/app/Activity")) {
+            System.out.println(">>> this.visitName: " + this.visitName);
         }
-        if(this.visitName.equals("androidx/core/app/ComponentActivity")){
-            System.out.println(">>> this.visitName: "+this.visitName);
+        if (this.visitName.equals("androidx/core/app/ComponentActivity")) {
+            System.out.println(">>> this.visitName: " + this.visitName);
         }
 
-        if(sComponentActivityOnCreate.equals(method)){
+        if (sComponentActivityOnCreate.equals(method)) {
             return new LifecycleOnCreateMethodVisitor(methodVisitor);
         }
 
-        if(sHookedClassFunbefore.equals(method)){return new HookedClassMethodVisitor(methodVisitor);}
-
+        if (sHookedClassFunbefore.equals(method)) {
+            return new HookedClassMethodVisitor(methodVisitor);
+        }
 
 
         return new MethodVisitor(Opcodes.ASM6, methodVisitor) {
@@ -81,7 +82,7 @@ class CallMethodVisitor extends ClassVisitor {
             public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
                 String method = owner + "." + name + desc;
                 if (TOUCH_METHOD.containsKey(method)) {
-                    System.out.println(">>> "+visitName+" >>> "+method);
+                    System.out.println(">>> " + visitName + " >>> " + method);
                     String className = TOUCH_METHOD.get(method);
                     opcode = Opcodes.INVOKESTATIC;
                     owner = sClassNameProxy;
@@ -100,8 +101,6 @@ class CallMethodVisitor extends ClassVisitor {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
 
             }
-
-
 
 
         };
