@@ -78,7 +78,7 @@ public class ClassCreatorProxy {
                 .returns(void.class)
                 .addParameter(host, "host");
 
-        for (int id : mVariableElementMap.keySet()) { // 注解的参数值
+        for (int id : mVariableElementMap.keySet()) { // 注解的参数值，也就是被注解的button，获取他的参数名字，参数类型
             VariableElement element = mVariableElementMap.get(id);
             String name = element.getSimpleName().toString();
             String type = element.asType().toString();

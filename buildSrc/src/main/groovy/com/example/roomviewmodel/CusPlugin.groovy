@@ -11,7 +11,6 @@ import org.gradle.api.Project
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
-import com.example.roomviewmodel.ClassVisitorFactory
 
 import java.util.jar.JarEntry
 import java.util.jar.JarFile
